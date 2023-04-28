@@ -1,6 +1,4 @@
 .DS_Store
 venv/
 __pycache__/
-adressa/
-mind/
-cit_large/
+datasets/
