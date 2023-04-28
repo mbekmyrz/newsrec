@@ -22,7 +22,7 @@ def train(model, optimizer, criterion, data_loader, device, run, epochs, eval_st
             
             pred = model(batch_data)
             ground_truth = batch_data['user', 'item'].edge_label
-            
+
             loss = criterion(pred, ground_truth)
             loss.backward()
             optimizer.step()
@@ -31,9 +31,10 @@ def train(model, optimizer, criterion, data_loader, device, run, epochs, eval_st
         
         epoch_loss = total_loss / total_examples
         train_loss.append(epoch_loss)
-        print(f"\nEpoch: {epoch:03d}, Train Loss: {epoch_loss:.4f}")
 
         if epoch % eval_steps == 0:
+            print(f"\nEpoch: {epoch:03d}, Train Loss: {epoch_loss:.4f}")
+
             val_auc_score, val_f1_score = test(model, data_loader['val'], device)
             test_auc_score, test_f1_score = test(model, data_loader['test'], device)
             

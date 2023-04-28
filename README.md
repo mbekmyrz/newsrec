@@ -13,10 +13,16 @@ You need to sign in with Google account to use Colab.
 If you don't want to download datasets, they can be can be mounted directly from the Google Drive within the Colab notebook. Add [datasets](https://drive.google.com/drive/folders/19_hl4deYR4hsySeCoti3a45AS7-GTiV9?usp=sharing) from the 'Shared with me' folder into your Drive by clicking 'Add shortcut to Drive' to access it from the notebook.
 Steps on how to run the model is well documented in the notebook along with the code to setup necessary libraries.
 
-#### On Local
-Alternatively, `main.ipynb` can be run by downloading the datasets and installing libraries from `requirements.txt`:
+#### On Local Machine
+Alternatively, `main.ipynb` can be run from local Jupyter Notebook by downloading the datasets and installing libraries from `requirements.txt` and [PyG](https://github.com/pyg-team/pytorch_geometric) from its source:
 ```sh
 pip3 install -r requirements.txt
+pip3 install -q git+https://github.com/pyg-team/pytorch_geometric.git
+```
+
+With installed libraries, you can also run `main.py` from command line. For more options see `--help`:
+```sh
+python3 main.py --data cit_pt --plm ptbert --epochs 50 --eval_steps 10
 ```
 
 ### References
