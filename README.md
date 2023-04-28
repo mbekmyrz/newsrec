@@ -20,10 +20,10 @@ pip3 install -r requirements.txt
 ```
 
 ### References
-1. [Pairwise Learning for Neural Link Prediction for OGB](https://github.com/zhitao-wang/PLNLP)
+[Pairwise Learning for Neural Link Prediction for OGB](https://github.com/zhitao-wang/PLNLP)
 
-2. [ogbl-ppa](https://github.com/snap-stanford/ogb/tree/bd1cfa20f909f3e0cccf807eb8605961cf3ce49b/examples/linkproppred/ppa)
+[ogbl-ppa](https://github.com/snap-stanford/ogb/tree/bd1cfa20f909f3e0cccf807eb8605961cf3ce49b/examples/linkproppred/ppa)
 
-3. [Heterogeneous Graph Learning](https://pytorch-geometric.readthedocs.io/en/latest/notes/heterogeneous.html)
+[Heterogeneous Graph Learning](https://pytorch-geometric.readthedocs.io/en/latest/notes/heterogeneous.html)
 
-4. [Link Prediction on Heterogeneous Graphs with PyG](https://medium.com/@pytorch_geometric/link-prediction-on-heterogeneous-graphs-with-pyg-6d5c29677c70)
+[Link Prediction on Heterogeneous Graphs with PyG](https://medium.com/@pytorch_geometric/link-prediction-on-heterogeneous-graphs-with-pyg-6d5c29677c70)
