@@ -14,7 +14,7 @@ If you don't want to download datasets, they can be can be mounted directly from
 Steps on how to run the model is well documented in the notebook along with the code to setup necessary libraries.
 
 #### On Local Machine:
-Alternatively, `main.ipynb` can be run from local Jupyter Notebook by downloading the datasets and installing libraries from `requirements.txt` and [PyG](https://github.com/pyg-team/pytorch_geometric) from its source:
+Alternatively, `main.py` can be run from local machine by downloading the datasets and installing libraries from `requirements.txt` and [PyG](https://github.com/pyg-team/pytorch_geometric) from its source:
 ```sh
 pip3 install -r requirements.txt
 pip3 install -q git+https://github.com/pyg-team/pytorch_geometric.git
@@ -22,7 +22,7 @@ pip3 install -q git+https://github.com/pyg-team/pytorch_geometric.git
 
 With installed libraries, you can also run `main.py` from command line. For more options see `--help`:
 ```sh
-python3 main.py --data cit_pt --plm ptbert --epochs 50 --eval_steps 10
+python3 main.py --data cit_pt --plm ptbert --epochs 50 --eval_steps 10 > logs_cit_pt_ptbert.logs
 ```
 
 ### References
