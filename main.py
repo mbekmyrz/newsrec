@@ -16,7 +16,7 @@ def train(model, optimizer, criterion, data_loader, device, run, epochs, eval_st
     for epoch in range(1, epochs + 1):
         model.train()
         total_loss = total_examples = 0
-        for batch_data in tqdm.tqdm(data_loader['train']):
+        for batch_data in tqdm.tqdm(data_loader['train'], disable=True):
             optimizer.zero_grad()
             batch_data = batch_data.to(device)
             
@@ -59,7 +59,7 @@ def train(model, optimizer, criterion, data_loader, device, run, epochs, eval_st
 def test(model, data_loader, device):
     model.eval()
     predictions, ground_truths = [], []
-    for batch_data in tqdm.tqdm(data_loader):
+    for batch_data in tqdm.tqdm(data_loader, disable=True):
         with torch.no_grad():
             batch_data = batch_data.to(device)
             predictions.append(model(batch_data))
@@ -144,6 +144,7 @@ def main():
     feats_file = datasets_info[args.data]['plm'][args.plm]
     epochs = datasets_info[args.data]['epochs'] if args.epochs == -1 else args.epochs
     
+    print(f'Loading user and item data frames for: {args.data}')
     df_users, df_items = get_data_frames(users_csv, items_csv, user_naming, item_naming)
     item_feature_tensor = torch.load(feats_file, map_location=device)
     user_features_init = '' if args.num_user_features == -1 else 'zero'
@@ -153,21 +154,21 @@ def main():
     num_neighbors = [10, 5]
 
     if args.use_seperate_test_data:
-        print(f'Doing seperate train and test data for {args.data}')
+        print(f'Doing seperate user train and test data for {args.data}')
         users_train_csv = datasets_info[args.data]['users_train_csv']
         users_test_csv = datasets_info[args.data]['users_test_csv']
         
+        print(f'Train:')
         df_users_train, _ = get_data_frames(users_train_csv, items_csv, user_naming, item_naming)
-        df_users_test, _ = get_data_frames(users_test_csv, items_csv, user_naming, item_naming)
-        
         train_edges_coo = create_graph(df_users_train, df_items, user_naming, item_naming)
-        test_edges_coo = create_graph(df_users_test, df_items, user_naming, item_naming)
-        
         train_data = create_hetero_graph(edges_coo=train_edges_coo,
-                                        user_features_init=user_features_init,
-                                        user_feature_size=args.num_user_features,
-                                        item_feature_tensor=item_feature_tensor)
-
+                                                user_features_init=user_features_init,
+                                                user_feature_size=args.num_user_features,
+                                                item_feature_tensor=item_feature_tensor)
+        
+        print(f'Test:')
+        df_users_test, _ = get_data_frames(users_test_csv, items_csv, user_naming, item_naming)
+        test_edges_coo = create_graph(df_users_test, df_items, user_naming, item_naming)
         test_data = create_hetero_graph(edges_coo=test_edges_coo,
                                         user_features_init=user_features_init,
                                         user_feature_size=args.num_user_features,

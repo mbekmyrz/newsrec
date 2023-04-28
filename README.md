@@ -20,9 +20,9 @@ pip3 install -r requirements.txt
 pip3 install -q git+https://github.com/pyg-team/pytorch_geometric.git
 ```
 
-With installed libraries, you can also run `main.py` from command line. For more options see `--help`:
+With installed libraries, you can run `main.py` from command line. For more options see `--help`:
 ```sh
-python3 main.py --data cit_pt --plm ptbert --epochs 50 --eval_steps 10 > logs_cit_pt_ptbert.txt
+python3 main.py --data cit_pt --plm ptbert --epochs 50 --eval_steps 10 | tee logs_cit_pt_ptbert.txt
 ```
 
 ### References
