@@ -8,3 +8,5 @@ You need to sign in with Google account to use Colab.
 
 If you don't want to download datasets, they can be can be mounted directly from the Google Drive within the Colab notebook. [Datasets](https://drive.google.com/drive/folders/19_hl4deYR4hsySeCoti3a45AS7-GTiV9?usp=sharing) would be available in 'Shared with me' folder, you can click to 'Add shortcut to Drive' to access it from the notebook.
 Steps on how to run the model is well documented in the notebook along with the code to setup necessary libraries.
+
+Alternatively, [main.ipynb](main.ipynb) can be run by downloading the datasets and installing libraries from `requirements.txt`.
